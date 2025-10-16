@@ -55,6 +55,7 @@ MonoBehaviour:
   icon: {fileID: 6150017012470378753}
   nameText: {fileID: 8048694757152170786}
   button: {fileID: 5937752924836526344}
+  buttonLabel: {fileID: 598716396181233551}
 --- !u!114 &7945705246833050039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -59}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.0000034571, y: -77.41}
+  m_SizeDelta: {x: 206.0952, y: 54.8205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2314886305528504001
 CanvasRenderer:
@@ -336,7 +337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Add to party
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

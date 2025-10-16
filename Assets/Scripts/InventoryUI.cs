@@ -8,10 +8,9 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform contentParent;
     [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private Transform partyParent; // New: parent for the party slots (optional separate section)
 
     private RiffRaffCollector collector;
-    private List<RiffRaffData> currentPartyList = new(); // New: stores your current 4 RiffRaffs
+    private List<RiffRaffData> currentPartyList = new();
 
     private void Start()
     {
@@ -55,26 +54,16 @@ public class InventoryUI : MonoBehaviour
         foreach (Transform child in contentParent)
             Destroy(child.gameObject);
 
-        if (partyParent != null)
-        {
-            foreach (Transform child in partyParent)
-                Destroy(child.gameObject);
-        }
-
         // Populate with current collection
         foreach (var riffRaff in collector.collectedRiffRaffs)
         {
             if (riffRaff == null) continue;
 
-            Transform parent = currentPartyList.Contains(riffRaff) && partyParent != null
-                ? partyParent
-                : contentParent;
-
-            var slot = Instantiate(slotPrefab, parent);
+            var slot = Instantiate(slotPrefab, contentParent);
             var slotUI = slot.GetComponent<RiffRaffSlotUI>();
 
             if (slotUI != null)
-                slotUI.Setup(riffRaff, this); // Pass reference for click callback
+                slotUI.Setup(riffRaff, this); // Pass this UI for toggling party members
             else
                 Debug.LogError("Slot prefab missing RiffRaffSlotUI component!");
         }
@@ -91,10 +80,21 @@ public class InventoryUI : MonoBehaviour
             currentPartyList.Add(riffRaff);
         }
 
-        UpdateUI();
-
-        // Tell PartyManager to refresh the visual followers
+        // Update followers behind the player
         if (PartyManager.Instance != null)
             PartyManager.Instance.SetParty(currentPartyList);
+
+        // Refresh all slot button texts
+        foreach (Transform child in contentParent)
+        {
+            var slotUI = child.GetComponent<RiffRaffSlotUI>();
+            if (slotUI != null)
+                slotUI.UpdateButtonLabel();
+        }
+    }
+
+    public bool IsInParty(RiffRaffData riffRaff)
+    {
+        return currentPartyList.Contains(riffRaff);
     }
 }
