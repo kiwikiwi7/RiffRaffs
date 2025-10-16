@@ -49,7 +49,7 @@ public class PartySpawner : MonoBehaviour
             followerScript.followTarget = (i == 0)
                 ? player
                 : spawnedFollowers[i - 1].transform; // follow the previous one
-            followerScript.followDistance = 0.8f;
+            followerScript.followDistance = 5f;
             followerScript.followSpeed = 5f;
 
             spawnedFollowers.Add(newFollower);

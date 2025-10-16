@@ -846,8 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12c72e45c8b7c848b087905bc4b8937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiffRaffPartyManager
-  player: {fileID: 0}
-  riffRaffFollowerPrefab: {fileID: 0}
+  player: {fileID: 161896631}
+  riffRaffFollowerPrefab: {fileID: 1535522537360815122, guid: 27331966397c8b2419e30e69eebb93dd, type: 3}
   partyMembers: []
 --- !u!4 &228708930
 Transform:
