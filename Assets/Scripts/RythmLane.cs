@@ -1,13 +1,28 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using System.Collections;
 
 public class RhythmLaneUI : MonoBehaviour
 {
     [SerializeField] private Key keyToPress;
     [SerializeField] private RectTransform hitZone;
     [SerializeField] private float hitRange = 50f; // pixels
+    [SerializeField] private Image hitZoneImage; // assign the Image component of the hitZone
+    [SerializeField] private float flashDuration = 0.1f;
+
+    private Color defaultColor;
 
     public RectTransform HitZone => hitZone;
+
+    private void Start()
+    {
+        if (hitZoneImage == null)
+            hitZoneImage = hitZone.GetComponent<Image>();
+
+        if (hitZoneImage != null)
+            defaultColor = hitZoneImage.color;
+    }
 
     private void Update()
     {
@@ -17,6 +32,9 @@ public class RhythmLaneUI : MonoBehaviour
 
     private void CheckHit()
     {
+        bool hitSomething = false;
+        float closestDistance = float.MaxValue;
+
         foreach (Transform child in RhythmManagerUI.Instance.noteParent)
         {
             var note = child.GetComponent<RhythmNoteUI>();
@@ -26,11 +44,28 @@ public class RhythmLaneUI : MonoBehaviour
                 if (distance <= hitRange)
                 {
                     note.Hit();
-                    return;
+                    hitSomething = true;
+                    closestDistance = distance;
+
+                    RhythmScoreManager.Instance?.RegisterHit(distance, hitZone.position);
+                    break;
                 }
             }
         }
 
-        Debug.Log("Miss!");
+        if (!hitSomething)
+            RhythmScoreManager.Instance?.RegisterMiss(hitZone.position);
+
+        if (hitZoneImage != null)
+            StartCoroutine(FlashColor(hitSomething ? Color.green : Color.red));
+    }
+
+
+
+    private IEnumerator FlashColor(Color flashColor)
+    {
+        hitZoneImage.color = flashColor;
+        yield return new WaitForSeconds(flashDuration);
+        hitZoneImage.color = defaultColor;
     }
 }

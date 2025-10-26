@@ -11,6 +11,8 @@ public class RiffRaffCollector : MonoBehaviour
     {
         if (!collectedRiffRaffs.Contains(riffRaff))
         {
+            if (TutorialManager.Instance != null)
+                TutorialManager.Instance.OnPickedUpRiffRaff();
             collectedRiffRaffs.Add(riffRaff);
             Debug.Log($"Collected {riffRaff.riffRaffName}! Total: {collectedRiffRaffs.Count}");
 

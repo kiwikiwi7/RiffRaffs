@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67058c01ec2097244a58fe26c9b1bdbf, type: 3}
+  m_Name: The Horse
+  m_EditorClassIdentifier: Assembly-CSharp::RiffRaffData
+  riffRaffName: The Horse
+  sprite: {fileID: 1454526148240699265, guid: b65132113edfe3b4d955a3f4a652ef19, type: 3}
+  instrumentType: Horse
+  overWorldSong: {fileID: 2046759785723548114, guid: 960655d7f3d757c4ca5c2a546603adf6, type: 3}
+  performanceSong: {fileID: 2046759785723548114, guid: 960655d7f3d757c4ca5c2a546603adf6, type: 3}
+  description: 'he is the champion '

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1300021976151150376}
   - component: {fileID: 1710248587166727942}
   - component: {fileID: 2142364568344354857}
+  - component: {fileID: 6762041538451007410}
   m_Layer: 0
   m_Name: Follower
   m_TagString: Untagged
@@ -106,3 +107,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6762041538451007410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535522537360815122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199fd6cf69f9b4e4aab2c836206d2237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicNoteSpawner
+  notePrefab: {fileID: 3961594114222357005, guid: c0489c827450e1f499b4b831fb84874a, type: 3}
+  interval: 1.5
+  riseSpeed: 2
+  lifetime: 2
+  noteColor: {r: 1, g: 1, b: 1, a: 1}
